@@ -60,7 +60,9 @@ public class WordGram {
 
 	@Override
 	public int hashCode(){
-		myHash = toString().hashCode();
+		if(myHash == 0) {
+			myHash = toString().hashCode();
+		}
 		return myHash;
 	}
 	
