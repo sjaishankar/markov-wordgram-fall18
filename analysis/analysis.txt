@@ -15,12 +15,13 @@ values of WSIZE
 WSIZE    # duplicates
 2        60,453
 3        10,756
-4
-5
-7
-8
-9
-10
+4		 1987
+5		 667
+6		 362
+7		 226
+8		 151
+9		 105
+10		 73
 
 =====
 Explain in your own words the conceptual differences between 
@@ -29,11 +30,18 @@ Answer these questions:
 
 (1) Why the results of these methods should be the same in 
 terms of changes made to the HashSet parameter.
+	Both benchmark and benchmarkShift read a list of words and create WordGram objects that are then stored into the HashSet set.
 
 (2) What are the conceptual differences between the two
 benchmarking methods
+	benchmark stores the words in an ArrayList first, then converts that ArrayList into a String array, and uses the String array to create 
+	WordGram objects that are then added to set; benchmarkShift directly creates a String array of size WSIZE and adds Strings to the array from 
+	the text file, then using the shiftAdd method to read through the rest of the text file and add WordGram objects without exceeding WSIZE.
 
 (3) Is the total amount of memory allocated for arrays
 the same or different in the two methods? Account for
 arrays created in the methods and arrays created by
 WordGram objects. Try to be quantitative in answering.
+	benchmark uses more total amount of memory allocated for arrays than benchmarkShift because benchmark creates a String array that holds 
+	all values in the text file whereas benchmarkShift only creates an array of size WSIZE and then uses the shiftAdd method to iterate through the text file, so 
+	the array doesn't hold as many values as the text file itself like benchmark does.
